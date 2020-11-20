@@ -12,11 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Handler().postDelayed({
-            runOnUiThread {
-                addFragment(DashBoardProfile(), false, "queue_generator")
-            }
-        }, 5000)
+        addFragment(DashBoardProfile(), false, "queue_generator")
+
     }
 
     fun addFragment(
@@ -29,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         if (addToBackStack) {
             ft.addToBackStack(tag)
         }
-        ft.replace(R.id.main, fragment!!, tag)
+        ft.replace(R.id.fragment_container, fragment!!, tag)
         ft.commitAllowingStateLoss()
     }
 

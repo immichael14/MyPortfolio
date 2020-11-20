@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.gelo.myportfolio.R
 import kotterknife.bindView
 
-class DashBoardProfile : Fragment(), View.OnClickListener{
+class Education : Fragment(), View.OnClickListener{
 
-
-    private val profileImg: ImageView by bindView(R.id.profile_img)
     private val education : CardView by bindView(R.id.card_education)
     private val experience : CardView by bindView(R.id.card_experience)
 
@@ -21,18 +18,17 @@ class DashBoardProfile : Fragment(), View.OnClickListener{
         super.onCreate(savedInstanceState)
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.layout_dashboard, container, false)
+        return inflater.inflate(R.layout.layout_education, container, false)
     }
 
     override fun onStart() {
         super.onStart()
-
-        education.setOnClickListener(this)
     }
 
     override fun onResume() {
@@ -52,9 +48,7 @@ class DashBoardProfile : Fragment(), View.OnClickListener{
     }
 
     override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.card_education -> addFragment(Education(), false, "education")
-        }
+
     }
 
     fun addFragment(
@@ -70,4 +64,5 @@ class DashBoardProfile : Fragment(), View.OnClickListener{
         ft?.replace(R.id.fragment_container, fragment!!, tag)
         ft?.commitAllowingStateLoss()
     }
+
 }
